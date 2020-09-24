@@ -1,26 +1,26 @@
 resource "aws_db_parameter_group" "rds_postgres_pg" {
-  name        = var.parameter_group_name
+  name        = "${var.name_prefix}_rds_parameter_group"
   family      = var.parameter_group_family
   description = "TAMR RDS parameter group"
   tags        = var.additional_tags
 }
 
 resource "aws_db_subnet_group" "rds_postgres_subnet_group" {
-  name       = var.subnet_group_name
+  name       = "${var.name_prefix}_rds_postgres_subnet_group"
   subnet_ids = var.rds_subnet_ids
 }
 
 module "rds_sg" {
-  source              = "./modules/rds-postgres-sg"
+  source               = "./modules/rds-postgres-sg"
   ingress_sg_ids      = var.ingress_sg_ids
-  vpc_id              = var.vpc_id
-  security_group_name = var.security_group_name
-  additional_cidrs    = var.additional_cidrs
-  additional_tags     = var.additional_tags
+  vpc_id               = var.vpc_id
+  security_group_name  = "${var.name_prefix}_rds_security_group"
+  additional_cidrs     = var.additional_cidrs
+  additional_tags      = var.additional_tags
 }
 
 resource "aws_db_instance" "rds_postgres" {
-  name = var.postgres_name
+  name = "${var.name_prefix}_rds_postgres"
 
   identifier_prefix     = var.identifier_prefix
   allocated_storage     = var.allocated_storage

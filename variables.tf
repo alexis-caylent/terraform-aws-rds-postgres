@@ -1,3 +1,8 @@
+variable "name_prefix" {
+  type        = string
+  description = "A prefix to add to the names of all created resources"
+}
+
 variable "password" {
   description = "The password for the master DB user."
   type        = string
@@ -7,18 +12,6 @@ variable "username" {
   description = "The username for the master DB user."
   type        = string
   default     = "tamr"
-}
-
-variable "postgres_name" {
-  description = "The name of the postgres database to create on the DB instance"
-  type        = string
-  default     = "tamr_rds_db"
-}
-
-variable "parameter_group_name" {
-  description = "The name of the rds parameter group"
-  type        = string
-  default     = "rds-postgres-pg"
 }
 
 variable "identifier_prefix" {
@@ -81,11 +74,6 @@ variable "apply_immediately" {
   default     = false
 }
 
-variable "subnet_group_name" {
-  description = "The name of the subnet group to add the RDS instance to"
-  type        = string
-}
-
 variable "rds_subnet_ids" {
   description = "VPC subnet IDs in subnet group"
   type        = list(string)
@@ -101,12 +89,6 @@ variable "additional_tags" {
   description = "Additional tags to set on the RDS instance"
   type        = map
   default     = {}
-}
-
-variable "security_group_name" {
-  description = "Name for the security group for the rds instance"
-  type        = string
-  default     = "tamr_rds_sg"
 }
 
 variable "ingress_sg_ids" {
