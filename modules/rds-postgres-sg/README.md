@@ -7,7 +7,7 @@ module "rds_sg" {
   source               = "git::https://github.com/Datatamer/terraform-aws-rds-postgres.git//modules/rds-postgres-sg?ref=0.4.0"
   ingress_sg_ids       = ["sg-examplesparksecuritygroup1", "sg-examplesparksecuritygroup2", "sg-exampletamrvmsecuritygroup"]
   vpc_id               = "vpc-examplevpcid"
-  security_group_name  = "examplerdssecuritygroup"
+  security_group_name  = "example-rds-security-group"
   additional_cidrs     = ["1.2.3.4/32"]
 }
 ```
