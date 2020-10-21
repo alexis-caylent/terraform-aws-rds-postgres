@@ -1,5 +1,9 @@
 # Tamr Terraform Template Repo
 
+## v0.5.0 - Oct 21st 2020
+* Adds `name_prefix` to standardize names of resources created as well as avoid resource naming conflicts
+* In favor of prefixing names, this version removes the following input variables: `parameter_group_name`,`subnet_group_name`, `security_group_name`, `postgres_name`
+
 ## v0.4.0 - Oct 27th 2020
 * Consolidates inputs `tamr_vm_sg_id` and `spark_cluster_sg_ids` into one input, `ingress_sg_ids`
 
